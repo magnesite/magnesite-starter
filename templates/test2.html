@@ -1,0 +1,19 @@
+{% extends 'base_layout.html' %}
+
+
+{% block main %}
+<main>
+
+  <h1>Magnesite Starter page 2</h1>
+
+<div>
+
+{% for key, value in d.items() %}
+    <h3>{{ key|e }}</h3>
+    <p>{{ value|e }}</p>
+{% endfor %}
+
+</div>
+
+</main>
+{% endblock %}

@@ -1,0 +1,60 @@
+
+# Branch to update (optional; defaults to master)
+backend:
+  name: github
+  repo: magnesite/magnesite-auth   # Path to your Github repository
+  branch: master             # Branch to update
+  base_url: https://magnesite-auth.herokuapp.com
+
+# Media files will be stored in the repo under images/uploads
+media_folder: "uploads/static/"
+
+# The src attribute for uploaded media will begin with /images/uploads
+public_folder: "/static/uploads"
+
+publish_mode: editorial_workflow
+
+collections:
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Blog Posts" # Used in the UI
+    name_singular: "blog post"
+    description: "Desc goes here"
+    folder: "uploads/blog_posts" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}_{{month}}_{{day}}_{{url_title}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Layout", name: "layout", widget: "hidden", default: ["posts"]}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "URL Title", name: "url_title", widget: "string"}
+      - {label: "Date Published", name: "date_pub", widget: "datetime"}
+      - {label: "Date Updated", name: "date_update", widget: "datetime"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Author", name: "author", widget: "relation", collection: "authors", searchFields: ["name"], valueField: ["name"] }
+  - name: "events" # Used in routes, e.g., /admin/collections/blog
+    label: "Events" # Used in the UI
+    folder: "uploads/events" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}_{{month}}_{{day}}_{{url_title}}"  # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "URL Title", name: "url_title", widget: "string"}
+      - {label: "Date Published", name: "date_pub", widget: "datetime"}
+      - {label: "Date Updated", name: "date_update", widget: "datetime"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Author", name: "author", widget: "relation", collection: "authors", searchFields: ["name"], valueField: ["name"] }
+  - name: "authors" # Used in routes, e.g., /admin/collections/blog
+    label: "Authors" # Used in the UI
+    folder: "uploads/authors" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}_{{month}}_{{day}}_{{url_title}}"  # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "URL Title", name: "url_title", widget: "string"}
+      - {label: "Date Published", name: "date_pub", widget: "datetime"}
+      - {label: "Date Updated", name: "date_update", widget: "datetime"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Body", name: "body", widget: "markdown"}
